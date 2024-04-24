@@ -1,4 +1,5 @@
 import express from 'express'
+import axios from 'axios'
 const app = express()
 app.use(express.json())
 /*
@@ -35,15 +36,26 @@ app.post('/lembretes', (req, res) => {
   lembretes[id] = lembrete
   //incremento o id
   id = (+id + 1).toString()
+  //emitindo o evento
+  axios.post('http://localhost:10000/eventos', {
+    tipo: 'LembreteCriado',
+    dados: lembrete
+  })
   //responder ao cliente
   res.json(lembrete)
 })
 
-//GET /lembretes/{id} obter um lembrete pelo id
-//pesquisar como podemos pegar o id dado que ele faz parte da url
-app.get('', (req, res) => {
-  
+//POST /eventos
+app.post('/eventos', (req, res) => {
+  console.log(req.body)
+  res.send()
 })
+
+// //GET /lembretes/{id} obter um lembrete pelo id
+// //pesquisar como podemos pegar o id dado que ele faz parte da url
+// app.get('', (req, res) => {
+  
+// })
 
 
 const port = 4000
