@@ -16,7 +16,7 @@ const funcoes: Record<string, Function> = {
     //fazendo com ternário..
     observacao.status = observacao.texto.includes(palavraChave) ? 'importante' : 'comum'
     // seguir emita um evento direcionado ao barramento do tipo ObservacaoClassificada
-    axios.post('http://localhost:10000/eventos', {
+    axios.post('http://192.168.1.147:10000/eventos', {
       tipo: 'ObservacaoClassificada',
       dados: { ...observacao }
     })

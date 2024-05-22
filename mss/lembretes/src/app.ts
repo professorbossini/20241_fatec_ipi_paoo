@@ -37,7 +37,7 @@ app.post('/lembretes', (req, res) => {
   //incremento o id
   id = (+id + 1).toString()
   //emitindo o evento
-  axios.post('http://localhost:10000/eventos', {
+  axios.post('http://192.168.1.147:10000/eventos', {
     tipo: 'LembreteCriado',
     dados: lembrete
   })

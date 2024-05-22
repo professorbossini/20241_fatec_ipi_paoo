@@ -11,7 +11,7 @@ const funcoes: Record <string, Function> = {
     const obsParaAtualizar: Observacao = observacoesAux.find(o => o.id === observacao.id)!
     obsParaAtualizar.status = observacao.status
     //emitir um evento do tipo ObservacaoAtualizada
-    axios.post('http://localhost:10000/eventos', {
+    axios.post('http://192.168.1.147:10000/eventos', {
       tipo: 'ObservacaoAtualizada',
       dados: {
         id: observacao.id,
@@ -75,7 +75,7 @@ app.post('/lembretes/:id/observacoes', (req, res) => {
 
   //três pontinhos é o operador spread
   //emitindo um evento
-  axios.post('http://localhost:10000/eventos', {
+  axios.post('http://192.168.1.147:10000/eventos', {
     tipo: 'ObservacaoCriada',
     dados: {...obs,  lembreteId: req.params.id}
   })
